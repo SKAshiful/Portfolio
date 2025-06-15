@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Updated Title -->
+    <title>SK Ashiful Haque - Projects</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5e2ca5;
+            --secondary: #7938b2;
+            --light: #f8f5ff;
+            --dark: #333;
+            --accent: #efe5fd;
+            --transition-speed: 0.5s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background-color var(--transition-speed);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: var(--secondary);
+            border-radius: 4px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        main {
+            margin-top: 80px; /* Adjusted slightly for fixed header */
+            padding-top: 40px; /* Add padding to prevent content from hiding under header */
+        }
+
+        .section {
+            padding: 80px 0;
+            transition: background-color var(--transition-speed);
+        }
+
+        /* Specific section styling for alternating backgrounds */
+        .section:nth-child(odd) {
+             background-color: var(--light);
+        }
+        .section:nth-child(even) {
+             background-color: var(--accent);
+        }
+
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            transition: color var(--transition-speed);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+            transition: background-color var(--transition-speed);
+        }
+
+        /* New Project Card Style */
+        .project-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Ensure content fits */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .project-card h4 {
+            color: var(--secondary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .project-card h5 {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .project-card p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .project-card ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .project-card li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .project-card img, .project-card video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .project-card video {
+             border: 1px solid #eee;
+        }
+
+        /* Style for buttons within project cards */
+         .project-card .btn-group {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px; /* Space between buttons */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+         }
+         
+        .project-card .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: none; /* Reset button border */
+            cursor: pointer;
+        }
+
+        .project-card .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        
+        .project-card .btn i {
+            margin-left: 8px;
+        }
+
+        /* Back button style */
+        .back-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Ensure compatibility with existing .btn styles */
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: none; /* Reset button border */
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Style for the primary themed button */
+        .btn-primary-theme {
+             background-color: var(--primary);
+             color: white;
+        }
+        .btn-primary-theme:hover {
+             background-color: var(--secondary);
+             color: white; /* Ensure text color remains white on hover */
+        }
+
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px; /* Add space above footer */
+            transition: background-color var(--transition-speed);
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(94, 44, 165, 0.2);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px; /* Match header height */
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--primary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                padding: 10px 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+             main {
+                 margin-top: 70px; /* Match header height on mobile */
+             }
+
+            .cursor-follower {
+                display: none;
+            }
+            
+            .project-card .btn-group {
+                 justify-content: center; /* Center buttons on mobile */
+            }
+        }
+
+        /* Animation classes (Copied from index.html) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            transform: scale(0.8);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .scale-in.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .rotate-in {
+            transform: rotate(-10deg) scale(0.9);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .rotate-in.visible {
+            transform: rotate(0) scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>SK Ashiful Haque</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <!-- Links point back to the main portfolio page sections -->
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#education">Education</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#projects">Projects Overview</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#contact-form">Message Me</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Intro Section -->
+         <section class="section" id="project-intro">
+             <div class="container">
+                 <h2 class="section-title animate__animated animate__fadeInDown">My Projects Portfolio</h2>
+                 <p class="fade-in" style="text-align: center; max-width: 800px; margin: -30px auto 50px auto; color: #555;">
+                     Welcome to my portfolio, where creativity meets technical skills. This space showcases a variety of my work, including professional documents crafted in Microsoft Word, dynamic spreadsheets in Excel, impactful presentations in PowerPoint, and visually stunning designs created with Photoshop. Alongside these, you’ll also find my hand-drawn human portraits, reflecting my passion for art and attention to detail. Each project represents my dedication to learning, exploring, and delivering quality in everything I create.
+                 </p>
+             </div>
+         </section>
+
+        <!-- Microsoft Word Section -->
+        <section class="section" id="ms-word">
+            <div class="container">
+                <h2 class="section-title">Microsoft Word Projects</h2>
+
+                <div class="project-card fade-in">
+                    <h4>Form No. 60 Template Design</h4>
+                    <p>This project features a meticulously crafted template for Form No. 60, designed using Microsoft Word. This form is essential for individuals who do not have a Permanent Account Number (PAN) and are entering specific financial transactions under Rule 114B of the Income Tax Rules. The template demonstrates attention to detail, accuracy in formatting, and adherence to professional standards required for official documentation.</p>
+                    <h5>Significance:</h5>
+                    <ol>
+                        <li>Compliance with Regulations:<br>The form is structured in alignment with legal requirements, ensuring accuracy and relevance for financial institutions and individuals.</li>
+                        <li>User-Friendly Layout:<br>The layout is intuitive and clearly organized, with distinct sections for personal details, transaction information, and verification. This ensures ease of use for applicants and authorities.</li>
+                        <li>Professional Formatting:<br>Every detail, including fonts, alignment, and spacing, has been carefully designed to reflect a professional and polished document.</li>
+                    </ol>
+                    <img src="PDF of Form 60 by Ashiful~2.png" alt="Form 60 Preview">
+                    <div class="btn-group">
+                        <a href="PDF of Form 60 by Ashiful.pdf" class="btn btn-primary-theme" download>Download PDF <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <h4>Certificate Design for Data Entry Training Program</h4>
+                    <p>This project is a professional and aesthetically pleasing certificate template created for a Data Entry Training Program. The certificate is designed to recognize the achievement of successful completion with outstanding performance, as indicated by the recipient's 99% score. The design combines elegance and clarity, making it suitable for academic, corporate, or training environments.</p>
+                     <h5>Significance:</h5>
+                    <ol>
+                        <li>Sophisticated Visual Appeal:<br>The template uses a harmonious color palette of blue, yellow, and white, combined with sharp geometric accents to create a professional and modern look.</li>
+                        <li>Customization Flexibility:<br>This design is versatile and can be easily adapted to any training or certification program by altering the text or colors.</li>
+                        <li>Clear Hierarchy of Information:<br>The layout ensures that key details like the recipient's name, purpose of certification, and the awarding authority are prominently displayed for readability and emphasis.</li>
+                        <li>Practical Application:<br>The certificate serves as a tangible recognition of skill enhancement, motivating individuals while adding significant value to their professional profiles.</li>
+                    </ol>
+                    <img src="Certificate.png" alt="Certificate Preview">
+                     <div class="btn-group">
+                        <a href="Certificate by Ashiful.docx" class="btn btn-primary-theme" download>Download DOCX <i class="fas fa-download"></i></a>
+                        <a href="kk.pdf" class="btn btn-primary-theme" download>Download PDF <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                     <h4>Automation of Certificate Generation Using Mail Merge</h4>
+                    <p>This project demonstrates the use of the Mail Merge feature in Microsoft Word to automate the generation of certificates for multiple recipients efficiently. The certificates, like the Data Entry Training Program Certificate, are personalized with recipient details such as name, scores, and other relevant information.</p>
+                     <h5>Significance:</h5>
+                     <ol>
+                        <li>Time Efficiency:<br>The Mail Merge process automates certificate creation for a large number of individuals, significantly reducing the time and effort compared to manual entry.</li>
+                        <li>Seamless Integration:<br>By linking a data source (such as an Excel sheet) containing recipient details with the certificate template, this process ensures accurate and error-free personalization.</li>
+                        <li>Customizable Output:<br>Each certificate is generated with unique details while maintaining uniform formatting, ensuring a polished and cohesive final product.</li>
+                     </ol>
+                     <img src="Mailing.png" alt="Mail Merge Preview">
+                     <!-- No download for this example, as it's a process demonstration -->
+                </div>
+
+                <div class="project-card fade-in">
+                    <h4>Professional Resume Design for Marketing Manager</h4>
+                    <p>This project showcases a professionally designed resume for a Marketing Manager, emphasizing a clean and modern layout with a clear structure to highlight key achievements, skills, and experience. The design incorporates visually appealing elements such as sections for education, skills, languages, certifications, and achievements, ensuring easy readability.</p>
+                    <h5>Key Features:</h5>
+                    <ol>
+                        <li>Personalized Header:<br>Includes the candidate's name, photo, and professional title for immediate recognition.</li>
+                        <li>Education and Skills Section:<br>Displays academic qualifications, achievements (e.g., GPA), and critical skills such as digital marketing and data analysis.</li>
+                        <li>Work Experience:<br>Highlights impactful contributions and results in previous roles, such as increased sales, social media growth, and campaign performance improvements.</li>
+                        <li>Modern Design Elements:<br>Features a sleek layout with consistent fonts, colors, and spacing for a polished and professional appearance.</li>
+                    </ol>
+                    <img src="Project CV by Ashiful PDF.png" alt="Resume Preview">
+                    <div class="btn-group">
+                         <a href="Project CV by Ashiful.docx" class="btn btn-primary-theme" download>Download DOCX <i class="fas fa-download"></i></a>
+                         <a href="Project CV by Ashiful PDF.pdf" class="btn btn-primary-theme" download>Download PDF <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Microsoft Excel Section -->
+        <section class="section" id="ms-excel">
+            <div class="container">
+                <h2 class="section-title">Microsoft Excel Projects</h2>
+
+                <div class="project-card scale-in">
+                    <h4>January Sales Dashboard</h4>
+                    <p>This is my Excel project, where I created a sales dashboard for January. It presents sales data in a structured and visually appealing way. You can see details like salespersons, regions, products, units sold, total sales, and targets. I’ve used conditional formatting to highlight whether the targets were achieved or not, making it easy to interpret. There’s also a dropdown menu to select products, ensuring consistency in data entry. At the bottom, I’ve added a summary that shows the best and worst salesperson, along with a regional sales breakdown using color-coded bars for better visualization. This project demonstrates how Excel can be used for data analysis and dashboard creation in a clear and efficient way.</p>
+                   <img src="Sales 2.png" alt="Sales Dashboard Preview">
+                    <div class="btn-group">
+                        <a href="Sales Dashboard by Ashiful.xlsx" class="btn btn-primary-theme" download>Download XLSX <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+                 <div class="project-card scale-in">
+                   <h4>January Sales Pivot Table</h4>
+                   <p>This is the pivot table I created for my January Sales Dashboard. It summarizes the total sales data by salespersons and product categories, making it easy to analyze performance. The table is structured to show sales figures for Watches, laptops and phones, along with a grand total for each salesperson. I’ve also added filters to refine the data by region or product type, allowing for better insights. This pivot table helps in quickly identifying trends and comparing sales contributions across different individuals.</p>
+                   <img src="Sales 1.png" alt="Sales Pivot Table Preview">
+                    <div class="btn-group">
+                        <a href="Sales Dashboard by Ashiful.xlsx" class="btn btn-primary-theme" download>Download XLSX <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+                 <div class="project-card scale-in">
+                   <h4>Automated Salary Sheet</h4>
+                   <p>This is an Automated Salary Sheet that I created in Excel to calculate employee salaries efficiently. It includes essential salary components such as Basic Salary, House Rent Allowance (HRA), Dearness Allowance (DA), and Other Allowances, which together form the Gross Salary. The sheet also automatically calculates deductions like Provident Fund (PF) and Tax, ensuring accuracy in net salary calculations. Conditional formatting is applied to highlight different salary ranges, making it easier to analyze. This system simplifies payroll management by automating salary breakdowns based on predefined formulas.</p>
+                   <img src="Automatic salary sheet.png" alt="Salary Sheet Preview">
+                   <div class="btn-group">
+                        <a href="Indian_Automated_Salary_Sheet.xlsx" class="btn btn-primary-theme" download>Download XLSX <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+                 <div class="project-card scale-in">
+                   <h4>Marksheet Automation</h4>
+                   <p>This Marksheet Automation project in Excel generates student marksheets based on data stored in the Data sheet, which includes student details, school name, subjects, and marks. The Marksheet sheet formats and displays the marksheet for an individual student, using their roll number for quick lookup. It calculates grades and remarks for each subject and checks if a student has failed more than one subject; if so, they are marked as Failed. Additionally, it calculates the overall percentage and final result, streamlining the marksheet generation process while ensuring accuracy.</p>
+                   <img src="Marksheet Pro.png" alt="Marksheet Automation Preview">
+                   <div class="btn-group">
+                         <a href="https://docs.google.com/spreadsheets/d/1TApZR5ThAh3pd8glyv3zZ3W5qp7ZIVAZ/edit?usp=drivesdk&ouid=103182076469187075715&rtpof=true&sd=true" class="btn btn-primary-theme" target="_blank" rel="noopener noreferrer">View on Google Drive <i class="fas fa-external-link-alt"></i></a>
+                         <!-- Note: Direct download from GDrive link is tricky without API, linking is better -->
+                   </div>
+                </div>
+
+                 <div class="project-card scale-in">
+                   <h4>Monthly Personal Budget</h4>
+                   <p>The Monthly Personal Budget project in Excel helps track and compare projected expenses with actual spending across different categories such as housing, transportation, food, healthcare, and more. It calculates the difference between projected and actual costs, highlighting savings in green for easy visualization. A bar chart is included to provide a graphical representation of the budget distribution, making it easier to analyze spending patterns. The total expenses are also calculated to give a clear overview of overall financial management. This project serves as an efficient tool for budgeting and expense tracking.</p>
+                   <img src="Monthly Personal Budget by Ashiful.png" alt="Personal Budget Preview">
+                    <div class="btn-group">
+                        <a href="Monthly Personal Budget by Ashiful.xlsx" class="btn btn-primary-theme" download>Download XLSX <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Microsoft PowerPoint Section -->
+        <section class="section" id="ms-powerpoint">
+            <div class="container">
+                <h2 class="section-title">Microsoft PowerPoint Projects</h2>
+
+                <div class="project-card rotate-in">
+                    <h4>WriteFlow Presentation</h4>
+                    <p>This presentation has been designed to professionally showcase WriteFlow, a real HTML-based notepad project I developed. The objective of this PowerPoint is not to market the product commercially but to demonstrate my skills in presentation design, content structuring, and visual communication. Each slide reflects a corporate-style approach—complete with mission and vision statements, development timeline, feature highlights, and performance statistics—all tailored to give a realistic and polished overview of the project. Through this work, I aim to present my capability to turn technical concepts into compelling, client-ready presentations.</p>
+                    <video src="WriteFlow.mp4" controls loop poster="WriteFlow PPT.png"></video>
+                
+                    <div class="btn-group">
+                          <a href="WriteFlow.pptx" class="btn btn-primary-theme" download>Download PPTX <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-card rotate-in">
+                    <h4>Electric Fan Presentation</h4>
+                    <p>This PowerPoint project features a cleverly animated electric fan that visually simulates motion and interaction through slide transitions. Designed entirely in PowerPoint, the fan includes a toggleable button that switches between two slides—one where the fan is stationary and another where the blades appear to spin. When the user clicks the green button, it turns red and transitions to the spinning fan animation, giving the impression that the fan has been switched on. Clicking the red button brings the user back to the original slide with a stationary fan and changes the button back to green, effectively simulating a power-off function. This project demonstrates interactive presentation techniques using only slide design and transitions, showcasing creativity in animation without any external scripting or plugins.</p>
+                    <video src="Fan Presentation.mp4" controls loop poster="Fan Presentation.jpg"></video>
+                
+                    <div class="btn-group">
+                          <a href="Fan Presentation.pptx" class="btn btn-primary-theme" download>Download PPTX <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Adobe Photoshop Section -->
+        <section class="section" id="ms-photoshop">
+            <div class="container">
+                <h2 class="section-title">Adobe Photoshop</h2>
+
+                <div class="project-card fade-in">
+                    <h4>Wedding Season Ad Concept</h4>
+                    <p>This image was created in Adobe Photoshop as a style and concept demonstration. Usely is a fictional store name, used to simulate a wedding-season promotional poster. The design features a traditional Indian bride and groom holding shopping bags, set against a warm beige background with star-like sparkles to enhance the festive mood. The top headline announces the sale event, while the bold text at the bottom emphasizes the “Up to 50% OFF” offer with a clear “Shop Now” call-to-action. The layout, color scheme, and character placement are intended to reflect typical seasonal marketing styles seen during Indian wedding promotions.</p>
+                    <img src="Wedding Season Ad Concept.webp" alt="Wedding Season Ad Concept">
+                </div>
+
+                <div class="project-card fade-in">
+                    <h4>TantuVastra – Web Design Mockup</h4>
+                    <p>A conceptual e-commerce homepage created in Photoshop to showcase layout design, brand storytelling, and UI structure. Inspired by Bengal’s textile heritage, the design uses warm tones, festive elements, and product cards to simulate an elegant shopping experience. Not a real store—this project is a presentation of visual style and design skills.</p>
+                    <img src="TantuVastra – Web Design Mockup.webp" alt="TantuVastra – Web Design Mockup">
+                </div>
+                
+                <div class="project-card fade-in">
+                    <h4>Passport Photo Sheet</h4>
+                    <p>This layout was created in Adobe Photoshop to demonstrate skill in creating and formatting passport-sized photos for print. The sheet features a 5x6 grid of uniformly sized images, aligned with consistent background and lighting. Each photo is sized to 35×45 mm at 300 DPI, making it suitable for high-quality printing. The full sheet is designed to fit on an A4 page, showcasing precision in layout, spacing, and export settings—essential for professional photo print preparation.</p>
+                    <img src="Passport Photo Sheet.webp" alt="Passport Photo Sheet">
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- Interests Section -->
+        <section class="section" id="interests">
+             <div class="container">
+                 <h2 class="section-title">Interests - Traditional Human Portraits</h2>
+                 
+                 <div class="project-card slide-in-left">
+                     <h4>Raja Ram Mohan Roy</h4>
+                     <p>This is my drawing of Raja Ram Mohan Roy, a tribute to the great reformer who played a crucial role in shaping modern India. I used DOMS color pencils to bring warmth and depth to his features, while Camel charcoal pencil helped enhance the contrast, especially in his expressive eyes and mustache. I paid special attention to the shading of his turban, blending green and yellow tones to add authenticity. The soft background keeps the focus on his resolute expression, reflecting his wisdom and determination. Through this artwork, I wanted to honor his legacy and inspire others to appreciate his contributions to society.</p>
+                     <img src="RajaRamMohanRoy.jpg" alt="Drawing of Raja Ram Mohan Roy">
+                 </div>
+                 
+                 <div class="project-card slide-in-right">
+                     <h4>Gukesh Dommaraju</h4>
+                     <p>This is my watercolor painting of Gukesh Dommaraju, one of India's finest chess players. I used Rangeela, DOMS, and Camel watercolors to bring out the depth in his expression, focusing on the light and shadows to capture his determined yet calm demeanor. His eyes, full of focus and intensity, reflect the strategic mind that has taken him to great heights in the chess world. The soft blending of colors in the background complements the overall mood, highlighting his presence without distraction. Through this painting, I wanted to portray not just his likeness but also the spirit of a true chess champion.</p>
+                     <img src="GukeshDommaraju.jpg" alt="Painting of Gukesh Dommaraju">
+                 </div>
+                 
+                 <div class="project-card slide-in-left">
+                      <h4>SEKH Monirul Haque</h4>
+                     <p>This is a charcoal and graphite pencil portrait of my father. I focused on enhancing his facial expression to bring out the warmth in his smile and the depth in his gaze. The contrast between light and shadow adds dimension, making the portrait feel more lifelike. Every stroke in this piece is special to me, as it captures not just his features but also his personality.</p>
+                     <img src="Monirul.jpg" alt="Portrait of Sekh Monirul Haque">
+                 </div>
+                 
+                 <!-- Back Button -->
+                 <div class="back-button-container fade-in">
+                    <a href="index.html" class="btn btn-primary-theme"> <i class="fas fa-arrow-left"></i> Back to Portfolio Home</a>
+                 </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>SK Ashiful Haque | Projects Portfolio</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links (if any internal links were added)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                 // Only prevent default and scroll smoothly for internal links on this page
+                 if (this.pathname === window.location.pathname && this.hash) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if(targetElement) {
+                        // Calculate position considering the fixed header
+                        const headerOffset = document.querySelector('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // Extra 20px margin
+
+                        window.scrollTo({
+                             top: offsetPosition,
+                             behavior: "smooth"
+                        });
+                    }
+                    // Close mobile menu after clicking a link
+                    document.querySelector('.nav-links').classList.remove('active');
+                 } else if (this.pathname !== window.location.pathname) {
+                    // If it's a link to another page (like index.html), close the menu
+                     document.querySelector('.nav-links').classList.remove('active');
+                 }
+            });
+        });
+
+        // Animation on scroll
+        function checkVisible() {
+            const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .rotate-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                // Trigger animation when element is 100px from bottom or higher
+                if (elementTop < windowHeight - 100) { 
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Initial check & Check on scroll
+        window.addEventListener('load', checkVisible);
+        window.addEventListener('scroll', checkVisible);
+
+        // Color theme cycling (Copied from index.html)
+        const colorThemes = [
+            {primary: '#5e2ca5', secondary: '#7938b2', light: '#f8f5ff', accent: '#efe5fd'},
+            {primary: '#0f4c81', secondary: '#3b7ea1', light: '#e6f7ff', accent: '#c8e9ff'},
+            {primary: '#2e7d32', secondary: '#4caf50', light: '#f1f8e9', accent: '#dcedc8'},
+            {primary: '#c2185b', secondary: '#e91e63', light: '#fce4ec', accent: '#f8bbd0'},
+            {primary: '#d84315', secondary: '#ff5722', light: '#fbe9e7', accent: '#ffccbc'}
+        ];
+
+        let currentTheme = 0;
+        let changeThemeTimeout;
+
+        function cycleColorTheme() {
+            currentTheme = (currentTheme + 1) % colorThemes.length;
+            const theme = colorThemes[currentTheme];
+
+            document.documentElement.style.setProperty('--primary', theme.primary);
+            document.documentElement.style.setProperty('--secondary', theme.secondary);
+            document.documentElement.style.setProperty('--light', theme.light);
+            document.documentElement.style.setProperty('--accent', theme.accent);
+
+            // Schedule next theme change
+            changeThemeTimeout = setTimeout(cycleColorTheme, 10000); // 10 seconds interval
+        }
+
+        // Start theme cycling after page load
+        window.addEventListener('load', () => {
+            changeThemeTimeout = setTimeout(cycleColorTheme, 10000);
+        });
+
+        // Mouse interaction effects (Copied from index.html)
+        const cursor = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            // Check if cursor element exists (it might be display:none on mobile)
+            if (cursor && window.getComputedStyle(cursor).display !== 'none') {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Add mouse interaction to interactive elements
+        // Updated selector list to include new project card elements
+        const interactiveElements = document.querySelectorAll('a, button, .project-card, .btn, .nav-links a, .hamburger');
+
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                 if (cursor && window.getComputedStyle(cursor).display !== 'none') {
+                    cursor.style.width = '60px';
+                    cursor.style.height = '60px';
+                    cursor.style.backgroundColor = 'rgba(94, 44, 165, 0.4)'; // Use current primary color dynamically? Maybe later.
+                 }
+            });
+
+            element.addEventListener('mouseleave', () => {
+                 if (cursor && window.getComputedStyle(cursor).display !== 'none') {
+                    cursor.style.width = '40px';
+                    cursor.style.height = '40px';
+                    cursor.style.backgroundColor = 'rgba(94, 44, 165, 0.2)';
+                 }
+            });
+        });
+
+        // Mouse click effect
+        document.addEventListener('click', () => {
+             if (cursor && window.getComputedStyle(cursor).display !== 'none') {
+                cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                setTimeout(() => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                }, 300);
+             }
+        });
+
+        // Mouse interaction with theme change (Copied from index.html)
+        let mouseIdleTimer;
+
+        document.addEventListener('mousemove', () => {
+            clearTimeout(mouseIdleTimer);
+            clearTimeout(changeThemeTimeout); // Stop auto-cycle on activity
+
+            mouseIdleTimer = setTimeout(() => {
+                // Restart auto-cycle after 5 seconds of inactivity
+                changeThemeTimeout = setTimeout(cycleColorTheme, 5000);
+            }, 2000); // 2 seconds of mouse movement resets the idle timer
+        });
+
+        // Removed Contact Form Submission Logic from index.html as it's not needed here.
+
+    </script>
+</body>
+</html>
